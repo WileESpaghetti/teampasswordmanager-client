@@ -1,0 +1,25 @@
+{
+  "name": "teampasswordmanager-client",
+  "version": "1.0.0",
+  "description": "A Node library for interacting with TeamPasswordManager",
+  "main": "index.js",
+  "private" true,
+  "scripts": {
+    "test": "grunt test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WileESpaghetti/teampasswordmanager-client.git"
+  },
+  "keywords": [
+    "api",
+    "passwords",
+    "teampasswordmanager"
+  ],
+  "author": "Lehman Black",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/WileESpaghetti/teampasswordmanager-client/issues"
+  },
+  "homepage": "https://github.com/WileESpaghetti/teampasswordmanager-client#readme",
+}
