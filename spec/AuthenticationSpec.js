@@ -4,7 +4,7 @@
  * So that I can make API calls
  */
 describe("As an unauthenticated API user", function() {
-	describe("when given a valid TeamPasswordManager URL", function() {
+	describe("given a valid TeamPasswordManager URL", function() {
 		describe("I want to authenticate", function() {
 			describe("using HTTP Basic Authentication", function() {
 				describe("and valid credentials", function() {
@@ -23,5 +23,9 @@ describe("As an unauthenticated API user", function() {
 				});
 			});
 		});
+	});
+
+	describe("given an invalid TeamPasswordManager URL", function() {
+
 	});
 });
