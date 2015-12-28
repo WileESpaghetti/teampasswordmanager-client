@@ -1,15 +1,12 @@
 var rc = require('rc');
+var ApiResource = require('./lib/apiresource');
 
 var TeamPasswordManager = function() {
-	var _config;
+	var _tpm;
 
-	_config = rc('teampasswordmanager', {
-		apiVersion: 'v4',
-		baseUrl: '', // trailingslashit
-		user: '',
-		pass: '',
-		weakSsl: false // true allows self signed certs
-	});
+	_tpm = this;
+
+	return _tpm;
 };
 
 module.exports = TeamPasswordManager;
