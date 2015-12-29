@@ -1,6 +1,7 @@
 var rc = require('rc');
 var ApiResource = require('./lib/apiresource');
 
+// FIXME need to be able to pass in config params
 var TeamPasswordManager = function() {
 	var _tpm;
 	var _resources;
@@ -35,16 +36,24 @@ var TeamPasswordManager = function() {
 		_resources.version.get(callback);
 	};
 
-	_tpm.projects = function(search, callback) {
+	_tpm.projects = function(query, callback) {
+		_resources.projects.get(callback);
+	};
 
-		_resources.projects.all(callback);
+	_tpm.passwords = function(query, callback) {
+		_resources.passwords.get(query, callback);
 	};
 
 	return _tpm;
 };
 
 module.exports = TeamPasswordManager;
-new TeamPasswordManager().version(function(err, response, body) {
+//new TeamPasswordManager().version(function(err, response, body) {
+//	console.log(err);
+//	console.log(body);
+//});
+new TeamPasswordManager().passwords(17, function(err, body) {
 	console.log(err);
+	//console.log(response);
 	console.log(body);
 });
