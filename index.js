@@ -52,7 +52,7 @@ module.exports = TeamPasswordManager;
 //	console.log(err);
 //	console.log(body);
 //});
-new TeamPasswordManager().passwords(17, function(err, body) {
+new TeamPasswordManager().passwords('/', function(err, body) {
 	console.log(err);
 	//console.log(response);
 	console.log(body);
