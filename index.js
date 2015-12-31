@@ -52,8 +52,8 @@ module.exports = TeamPasswordManager;
 //	console.log(err);
 //	console.log(body);
 //});
-new TeamPasswordManager().passwords('/', function(err, body) {
-	console.log(err);
+//new TeamPasswordManager().passwords(201456, function(err, body) {
+	//console.log(err);
 	//console.log(response);
-	console.log(body);
-});
+	//console.log(body);
+//});
