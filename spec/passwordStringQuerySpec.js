@@ -29,3 +29,5 @@ describe("Given an invalid search term", function() {
         });
     });
 });
+
+describe("A search that has multiple pages", function(done) {});

@@ -9,6 +9,8 @@ describe("Given a valid password ID", function() {
             expect(password).not.toBe(null);
 
             expect(typeof password).toBe('object');
+            expect(Array.isArray(password)).toBe(false);
+            context('', function(){});
             expect(password.id).toBe(validId);
             done();
         });
