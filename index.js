@@ -75,8 +75,11 @@ module.exports = TeamPasswordManager;
 //});
 
 var version = new PagedApiResource({
-	resource: 'passwords'
-}).get(function(err, passwords) {
+	resource: 'passwords',
+}).get({
+    concat: true
+}, function(err, passwords) {
 	console.log(typeof passwords);
     console.log(passwords);
+    //console.log(err);
 });
