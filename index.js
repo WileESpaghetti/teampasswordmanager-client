@@ -11,7 +11,14 @@ var TeamPasswordManager = function() {
 
 	_resources = {
 		version: new ApiResource({
-			resource: '/version',
+			resource: 'version',
+			pagination: false,
+			archives: false,
+			favorites: false,
+			search: false
+		}),
+		version: new ApiResource({
+			resource: 'generate_password',
 			pagination: false,
 			archives: false,
 			favorites: false,
@@ -67,7 +74,7 @@ module.exports = TeamPasswordManager;
 //});
 
 var version = new SimpleApiResource({
-	resource: 'version'
+	resource: 'generate_password'
 }).get(function(err, version) {
 	console.log(typeof version);
     console.log(version);
