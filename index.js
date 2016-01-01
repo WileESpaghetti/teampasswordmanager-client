@@ -76,7 +76,7 @@ module.exports = TeamPasswordManager;
 
 var version = new PagedApiResource({
 	resource: 'passwords'
-}).count.get(function(err, passwords) {
+}).get(function(err, passwords) {
 	console.log(typeof passwords);
     console.log(passwords);
 });
