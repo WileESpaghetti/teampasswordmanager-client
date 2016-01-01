@@ -1,4 +1,5 @@
 var rc = require('rc');
+var SimpleApiResource = require('./lib/simple-api-resource');
 var ApiResource = require('./lib/apiresource');
 
 // FIXME need to be able to pass in config params
@@ -64,3 +65,10 @@ module.exports = TeamPasswordManager;
 	//console.log(body.length);
 	//console.log(body);
 //});
+
+var version = new SimpleApiResource({
+	resource: 'version'
+}).get(function(err, version) {
+	console.log(typeof version);
+    console.log(version);
+});
