@@ -29,7 +29,11 @@ var TeamPasswordManager = function() {
 			archives: true,
 			favorites: true,
 			search: true
-		})
+		}),
+		users: new ApiResource(),
+		groups: new ApiResource(),
+		generate: new ApiResource(),
+		myPasswords: new ApiResource(),
 	};
 
 	_tpm.version = function(callback) {
