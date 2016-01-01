@@ -13,8 +13,11 @@ describe("A SimpleApiResource", function() {
         it('an API resource', function(done) {
             resource.get(function(err, result) {
                 expect(err).toBe(null);
+
                 expect(result).not.toBe(null);
+                expect(Array.isArray(result)).toBe(false);
                 expect(typeof result).toBe('object');
+
                 done();
             });
         });
@@ -29,12 +32,13 @@ describe("A SimpleApiResource", function() {
 
         it('should return an error', function(done) {
             resource.get(function(err, result) {
-                console.log(err);
-                console.log(result);
                 expect(err).not.toBe(null);
+                expect(Array.isArray(err)).toBe(false);
+                expect(typeof err).toBe('object');
                 expect(err.error).toBe(true);
 
                 expect(result).toBe(null);
+
                 done();
             });
         });
