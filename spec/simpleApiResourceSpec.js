@@ -32,6 +32,8 @@ describe("A SimpleApiResource", function() {
                 console.log(err);
                 console.log(result);
                 expect(err).not.toBe(null);
+                expect(err.error).toBe(true);
+
                 expect(result).toBe(null);
                 done();
             });
