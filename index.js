@@ -52,8 +52,11 @@ module.exports = TeamPasswordManager;
 //	console.log(err);
 //	console.log(body);
 //});
-//new TeamPasswordManager().passwords('example', function(err, body) {
+new TeamPasswordManager().passwords({ search: 'www',
+	concat: true
+}, function(err, body) {
 	//console.log(err);
 	//console.log(response);
+	console.log(body.length);
 	//console.log(body);
-//});
+});
