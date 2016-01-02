@@ -1,8 +1,8 @@
 var rc = require('rc');
 var SimpleApiResource = require('./lib/simple-api-resource');
-var PagedApiResource = require('./lib/paged-api-resource');
+var PaginatedApiResource = require('./lib/paginated-api-resource');
 var SearchableApiResource = require('./lib/searchable-api-resource');
-//var ApiResource = require('./lib/apiresource');
+var ApiResource = require('./lib/apiresource');
 
 // FIXME need to be able to pass in config params
 var TeamPasswordManager = function() {
@@ -11,44 +11,41 @@ var TeamPasswordManager = function() {
 
 	_tpm = this;
 
-	/*
+
 	_resources = {
 		version: new ApiResource({
 			resource: 'version',
 			pagination: false,
 			archives: false,
 			favorites: false,
-			search: false
+			searchable: false
 		}),
 		generate: new ApiResource({
 			resource: 'generate_password',
 			pagination: false,
 			archives: false,
 			favorites: false,
-			search: false
+			searchable: false
 		}),
 		projects: new ApiResource({
 			resource: '/projects',
 			pagination: true,
 			archives: true,
 			favorites: true,
-			search: true
+			searchable: true
 		}),
 		passwords: new ApiResource({
 			resource: '/passwords',
 			pagination: true,
 			archives: true, // is:archived
 			favorites: true, // is:favorites
-			search: true
+			searchable: true
 		}),
 		users: new ApiResource(),
 		groups: new ApiResource(),
-		//generate: new ApiResource(),
 		myPasswords: new ApiResource(),
 	};
-	*/
 
-	/*
 	_tpm.version = function(callback) {
 		_resources.version.get(callback);
 	};
@@ -60,15 +57,14 @@ var TeamPasswordManager = function() {
 	_tpm.passwords = function(query, callback) {
 		_resources.passwords.get(query, callback);
 	};
-*/
 	return _tpm;
 };
 
 module.exports = TeamPasswordManager;
-//new TeamPasswordManager().version(function(err, response, body) {
-//	console.log(err);
-//	console.log(body);
-//});
+new TeamPasswordManager().version(function(err, version) {
+	console.log(err);
+	console.log(version);
+});
 //new TeamPasswordManager().passwords({ search: 'www',
 //	concat: true
 //}, function(err, body) {
@@ -78,14 +74,13 @@ module.exports = TeamPasswordManager;
 	//console.log(body);
 //});
 
-var version = new SearchableApiResource({
-	resource: 'passwords',
-}).get({
-	concat: true,
-	access: 'www',
-	'in': 'Ardent Creative'
-}, function(err, passwords) {
-	console.log(typeof passwords);
-    console.log(passwords);
-    //console.log(err);
-});
+//var version = new SearchableApiResource({
+//	resource: 'passwords',
+//}).get(/*{
+//	concat: true,
+//	access: 'www',
+//},*/ function(err, passwords) {
+//	console.log(typeof passwords);
+//    console.log(passwords);
+//    //console.log(err);
+//});
