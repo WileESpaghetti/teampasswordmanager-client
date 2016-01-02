@@ -1,7 +1,8 @@
 var rc = require('rc');
 var SimpleApiResource = require('./lib/simple-api-resource');
 var PagedApiResource = require('./lib/paged-api-resource');
-var ApiResource = require('./lib/apiresource');
+var SearchableApiResource = require('./lib/searchable-api-resource');
+//var ApiResource = require('./lib/apiresource');
 
 // FIXME need to be able to pass in config params
 var TeamPasswordManager = function() {
@@ -10,6 +11,7 @@ var TeamPasswordManager = function() {
 
 	_tpm = this;
 
+	/*
 	_resources = {
 		version: new ApiResource({
 			resource: 'version',
@@ -18,7 +20,7 @@ var TeamPasswordManager = function() {
 			favorites: false,
 			search: false
 		}),
-		version: new ApiResource({
+		generate: new ApiResource({
 			resource: 'generate_password',
 			pagination: false,
 			archives: false,
@@ -35,16 +37,18 @@ var TeamPasswordManager = function() {
 		passwords: new ApiResource({
 			resource: '/passwords',
 			pagination: true,
-			archives: true,
-			favorites: true,
+			archives: true, // is:archived
+			favorites: true, // is:favorites
 			search: true
 		}),
 		users: new ApiResource(),
 		groups: new ApiResource(),
-		generate: new ApiResource(),
+		//generate: new ApiResource(),
 		myPasswords: new ApiResource(),
 	};
+	*/
 
+	/*
 	_tpm.version = function(callback) {
 		_resources.version.get(callback);
 	};
@@ -56,7 +60,7 @@ var TeamPasswordManager = function() {
 	_tpm.passwords = function(query, callback) {
 		_resources.passwords.get(query, callback);
 	};
-
+*/
 	return _tpm;
 };
 
@@ -74,10 +78,12 @@ module.exports = TeamPasswordManager;
 	//console.log(body);
 //});
 
-var version = new PagedApiResource({
+var version = new SearchableApiResource({
 	resource: 'passwords',
 }).get({
-    concat: true
+	concat: true,
+	access: 'www',
+	'in': 'Ardent Creative'
 }, function(err, passwords) {
 	console.log(typeof passwords);
     console.log(passwords);
