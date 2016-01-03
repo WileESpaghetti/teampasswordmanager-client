@@ -63,7 +63,7 @@ var TeamPasswordManager = function(config) {
 };
 
 module.exports = TeamPasswordManager;
-new TeamPasswordManager().passwords(function(err, version) {
+//new TeamPasswordManager().passwords({access_info: 'www'}, function(err, version) {
 //	console.log(err);
-	console.log(version);
-});
+	//console.log(version);
+//});

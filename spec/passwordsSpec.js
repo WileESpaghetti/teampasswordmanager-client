@@ -1,7 +1,47 @@
-describe("A suite", function() {
-	it("contains spec with an expectation", function() {
-		expect(true).toBe(true);
+var TeamPasswordManager = require('../index');
+
+describe("Passwords", function() {
+	describe("null query", function() {
+		var client = new TeamPasswordManager();
+        it("should be an array", function(done) {
+			client.passwords(function(err, passwords) {
+				expect(err).toBe(null);
+				expect(Array.isArray(passwords)).toBe(true);
+				expect(passwords.length).toBeGreaterThan(0);
+				done();
+			});
+		});
 	});
+
+	describe("id query", function() {
+		describe("found", function() {
+			var client = new TeamPasswordManager();
+			it("should be a password object", function(done) {
+				client.passwords(13, function(err, passwords) {
+					expect(err).toBe(null);
+					expect(Array.isArray(passwords)).toBe(false);
+
+					expect(typeof passwords).toBe('object');
+					done();
+				});
+			});
+		});
+
+		describe("not found", function() {
+			var client = new TeamPasswordManager();
+			it("should be an error object", function(done) {
+				client.passwords(9999, function(err, passwords) {
+					expect(err).not.toBe(null);
+					expect(typeof err).toBe('object');
+					expect(err.error).toBe(true);
+
+					expect(passwords).toBe(null);
+					done();
+				});
+			});
+		});
+	});
+
 });
 
 /*
