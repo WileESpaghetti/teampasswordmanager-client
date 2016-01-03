@@ -54,16 +54,16 @@ describe("Passwords", function() {
 				});
 			});
 		});
-	});
 
-	describe("not found", function() {
-		var client = new TeamPasswordManager();
-		it("should be an array", function(done) {
-			client.passwords('not found', function(err, passwords) {
-				expect(err).toBe(null);
-				expect(Array.isArray(passwords)).toBe(true);
-				expect(passwords.length).toBe(0);
-				done();
+		describe("not found", function() {
+			var client = new TeamPasswordManager();
+			it("should be an array", function(done) {
+				client.passwords('not found', function(err, passwords) {
+					expect(err).toBe(null);
+					expect(Array.isArray(passwords)).toBe(true);
+					expect(passwords.length).toBe(0);
+					done();
+				});
 			});
 		});
 	});
