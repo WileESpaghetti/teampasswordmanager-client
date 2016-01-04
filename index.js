@@ -25,18 +25,18 @@ var TeamPasswordManager = function(config) {
 			searchable: false
 		}),
 		projects: new ApiResource({
-			resource: '/projects',
+			resource: 'projects',
 			pagination: true,
 			archives: true,
 			favorites: true,
 			searchable: true
 		}),
 		passwords: new ApiResource({
-			resource: '/passwords',
-			pagination: true,
-			archives: true, // is:archived
-			favorites: true, // is:favorites
-			searchable: true
+			resource: 'passwords',
+			//pagination: true,
+			//archives: true, // is:archived
+			//favorites: true, // is:favorites
+			//searchable: true
 		}),
 		//users: new ApiResource(),
 		//groups: new ApiResource()
@@ -63,7 +63,3 @@ var TeamPasswordManager = function(config) {
 };
 
 module.exports = TeamPasswordManager;
-new TeamPasswordManager().passwords({access: 'http://www'}, function(err, version) {
-	console.log(err);
-	console.log(version);
-});
