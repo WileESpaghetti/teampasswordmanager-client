@@ -67,15 +67,50 @@ describe("Passwords", function() {
 			});
 		});
 	});
+
+	describe("search query", function() {
+		describe("found", function() {
+			var client = new TeamPasswordManager();
+			it("should be an array", function(done) {
+				client.passwords({access: 'www'}, function(err, passwords) {
+					expect(err).toBe(null);
+					expect(Array.isArray(passwords)).toBe(true);
+					expect(passwords.length).toBeGreaterThan(0);
+					done();
+				});
+			});
+		});
+
+		describe("not found", function() {
+			var client = new TeamPasswordManager();
+			it("should be an array", function(done) {
+				client.passwords('not found', function(err, passwords) {
+					expect(err).toBe(null);
+					expect(Array.isArray(passwords)).toBe(true);
+					expect(passwords.length).toBe(0);
+					done();
+				});
+			});
+		});
+	});
 });
 
 /*
 TeamPasswordManager.passwords(function(err, passwords) {});
-TeamPasswordManager.passwords(13,    function(err, passwords) {});
-TeamPasswordManager.passwords('www', function(err, passwords) {});
+ TeamPasswordManager.passwords({}, function(err, passwords) {});
 TeamPasswordManager.passwords({concat: true}, function(err, passwords) {});
-TeamPasswordManager.passwords({concat: true, search: 'www'}, function(err, passwords) {});
+
+TeamPasswordManager.passwords(13,    function(err, passwords) {});
+
+TeamPasswordManager.passwords('www', function(err, passwords) {});
+
+TeamPasswordManager.passwords({access_info: 'www'}, function(err, passwords) {});
 TeamPasswordManager.passwords({concat: true, access_info: 'www'}, function(err, passwords) {});
+
+TeamPasswordManager.passwords({search: 'www'}, function(err, passwords) {});
+TeamPasswordManager.passwords({concat: true, search: 'www', function(err, passwords) {});
 TeamPasswordManager.passwords({concat: true, search: 'www', access_info: 'ftp://'}, function(err, passwords) {});
+TeamPasswordManager.passwords({concat: true, 'in': 'www', access_info: 'ftp://'}, function(err, passwords) {});
+// TODO multiple 'is'
 // the above searches should also work if query = []
  */
